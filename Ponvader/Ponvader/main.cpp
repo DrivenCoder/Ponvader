@@ -16,6 +16,5 @@ void main()
 
 		gameWindow.clear();
 		gameWindow.display();
-		testing.poop();
 	}
 }
