@@ -13,7 +13,7 @@ public:
 private:
 	void handleEvents();
 	void playerInput(sf::Keyboard::Key key, bool isPressed);
-	void update();
+	void update(sf::Time deltaTime);
 	void render();
 
 private:
@@ -25,6 +25,8 @@ private:
 	sf::Sprite playerSprite;
 
 	bool playerMoveUp, playerMoveDown, playerMoveLeft, playerMoveRight;
-	
+
+	const float playerSpeed;
+	const sf::Time timePerFrame;
 };
 

@@ -5,7 +5,9 @@ Game::Game() :
 	playerMoveUp(false),
 	playerMoveDown(false),
 	playerMoveLeft(false),
-	playerMoveRight(false)
+	playerMoveRight(false),
+	playerSpeed(500.f),
+	timePerFrame(sf::seconds(1.f / 60.f))
 {
 	backgroundTexture.loadFromFile("./assets/textures/starsBackground.png");
 	backgroundTexture.setRepeated(true);
@@ -19,13 +21,23 @@ Game::Game() :
 
 void Game::run()
 {
+	sf::Clock clock;
+	sf::Time timeSinceLastUpdate = sf::Time::Zero;
 	while (gameWindow.isOpen())
 	{
 		handleEvents();
-		update();
+		timeSinceLastUpdate += clock.restart();
+		
+		while (timeSinceLastUpdate > timePerFrame)
+		{
+			timeSinceLastUpdate -= timePerFrame;
+			handleEvents();
+			update(timePerFrame);
+		} // timePerFrame
+		
 		render();
-	}
-}
+	} // isOpen
+} // run
 
 void Game::handleEvents()
 {
@@ -65,16 +77,19 @@ void Game::playerInput(sf::Keyboard::Key key, bool isPressed)
 		playerMoveRight = isPressed;
 }
 
-void Game::update()
+void Game::update(sf::Time deltaTime)
 {
+	sf::Vector2f movement(0.f, 0.f);
 	if (playerMoveUp)
-		std::cout << "Move Up" << std::endl;
+		movement.y -= playerSpeed;
 	if (playerMoveDown)
-		std::cout << "Move Down" << std::endl;
+		movement.y += playerSpeed;
 	if (playerMoveLeft)
-		std::cout << "Move Left" << std::endl;
+		movement.x -= playerSpeed;
 	if (playerMoveRight)
-		std::cout << "Move Right" << std::endl;
+		movement.x += playerSpeed;
+
+	playerSprite.move(movement * deltaTime.asSeconds());
 }
 
 void Game::render()
