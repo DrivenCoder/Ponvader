@@ -12,7 +12,7 @@ public:
 
 private:
 	void handleEvents();
-	void playerInput();
+	void playerInput(sf::Keyboard::Key key, bool isPressed);
 	void update();
 	void render();
 
@@ -23,6 +23,8 @@ private:
 
 	sf::Texture playerTexture;
 	sf::Sprite playerSprite;
+
+	bool playerMoveUp, playerMoveDown, playerMoveLeft, playerMoveRight;
 	
 };
 
