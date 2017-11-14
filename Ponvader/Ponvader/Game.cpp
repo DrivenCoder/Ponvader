@@ -80,15 +80,21 @@ void Game::playerInput(sf::Keyboard::Key key, bool isPressed)
 void Game::update(sf::Time deltaTime)
 {
 	sf::Vector2f movement(0.f, 0.f);
+	sf::Vector2u gameWindowSize = gameWindow.getSize();
+	sf::Vector2u textureSize = playerTexture.getSize();
 
 	if (playerMoveUp)
-		movement.y -= playerSpeed;
+		if (playerSprite.getPosition().y > 0)
+			movement.y -= playerSpeed;
 	if (playerMoveDown)
-		movement.y += playerSpeed;
+		if (playerSprite.getPosition().y + textureSize.y < gameWindowSize.y)
+			movement.y += playerSpeed;
 	if (playerMoveLeft)
-		movement.x -= playerSpeed;
+		if (playerSprite.getPosition().x > 0)
+			movement.x -= playerSpeed;
 	if (playerMoveRight)
-		movement.x += playerSpeed;
+		if (playerSprite.getPosition().x + textureSize.x < gameWindowSize.x)
+			movement.x += playerSpeed;
 
 	playerSprite.move(movement * deltaTime.asSeconds());
 }
