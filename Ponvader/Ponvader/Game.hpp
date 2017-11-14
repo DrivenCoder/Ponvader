@@ -29,4 +29,3 @@ private:
 	const float playerSpeed;
 	const sf::Time timePerFrame;
 };
-

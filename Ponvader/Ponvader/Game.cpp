@@ -80,6 +80,7 @@ void Game::playerInput(sf::Keyboard::Key key, bool isPressed)
 void Game::update(sf::Time deltaTime)
 {
 	sf::Vector2f movement(0.f, 0.f);
+
 	if (playerMoveUp)
 		movement.y -= playerSpeed;
 	if (playerMoveDown)
