@@ -4,6 +4,7 @@
 
 class Game
 {
+
 public:
 	Game();
 
@@ -17,7 +18,6 @@ private:
 
 private:
 	sf::RenderWindow gameWindow;
-
 
 };
 
