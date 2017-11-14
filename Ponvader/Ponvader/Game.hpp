@@ -18,6 +18,11 @@ private:
 
 private:
 	sf::RenderWindow gameWindow;
+	sf::Texture backgroundTexture;
+	sf::Sprite backgroundSprite;
 
+	sf::Texture playerTexture;
+	sf::Sprite playerSprite;
+	
 };
 
