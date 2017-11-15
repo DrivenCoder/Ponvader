@@ -17,6 +17,10 @@ Game::Game() :
 	playerTexture.loadFromFile("./assets/textures/paddle.png");
 	playerSprite.setTexture(playerTexture);
 	playerSprite.setPosition(50, 550);
+
+	enemyTexture.loadFromFile("./assets/textures/invaderSheet.png", sf::IntRect(40, 28, 64, 68));
+	enemySprite.setTexture(enemyTexture);
+	enemySprite.setPosition(300, 300);
 }
 
 void Game::run()
@@ -104,5 +108,6 @@ void Game::render()
 	gameWindow.clear();
 	gameWindow.draw(backgroundSprite);
 	gameWindow.draw(playerSprite);
+	gameWindow.draw(enemySprite);
 	gameWindow.display();
 }

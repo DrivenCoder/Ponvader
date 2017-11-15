@@ -24,6 +24,9 @@ private:
 	sf::Texture playerTexture;
 	sf::Sprite playerSprite;
 
+	sf::Texture enemyTexture;
+	sf::Sprite enemySprite;
+
 	bool playerMoveUp, playerMoveDown, playerMoveLeft, playerMoveRight;
 
 	const float playerSpeed;
